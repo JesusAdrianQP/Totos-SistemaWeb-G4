@@ -49,6 +49,18 @@ module.exports = {
         '800': '#999999', 
         '900': '#7d7d7d'
       },
+      'cuarto': {
+        '50': '#fffbf2', 
+        '100': '#fff6e6', 
+        '200': '#ffe9bf', 
+        '300': '#ffdc99', 
+        '400': '#ffc14d', 
+        '500': '#ffa700', 
+        '600': '#e69600', 
+        '700': '#bf7d00', 
+        '800': '#996400', 
+        '900': '#7d5200'
+    },
 
       transparent: 'transparent',
       current: 'currentColor',

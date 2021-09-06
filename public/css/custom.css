@@ -1,0 +1,15 @@
+/*ESTILOS PERSONALIZADOS DE LA APLICACIÓN - MÓDULO CLIENTES
+Derechos reservados @2021 - TOTO'S PIZZA SAC
+Desarrolladores unidos por un bien mayor*/
+
+/*custom > home*/
+.profile-background{
+    background-image: url(../image/Huancayo.jpg);
+    background-repeat: no-repat;
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+.ct-nos-background{
+    background-image: url(../image/pizza-nosotros.jpg);
+}

@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* Rutas de Módulo de clientes */
 //Ruta inicial de la landing page
 Route::view('/', 'custom/home');
+//Notificaciones de formulario de contacto
+Route::resource('messages', App\Http\Controllers\MessageController::class); 
 
+/* Rutas de Módulo de administrador */
 //Ruta de las autorizaciones
 Route::prefix('admin')->group(function() {
   Auth::routes();

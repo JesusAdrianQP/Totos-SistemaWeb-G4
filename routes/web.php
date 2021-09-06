@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/* Rutas de Módulo de clientes */
+//Ruta inicial de la landing page
+Route::view('/', 'custom/home');
+//Notificaciones de formulario de contacto
+Route::resource('messages', App\Http\Controllers\MessageController::class); 
+
+/* Rutas de Módulo de administrador */
+//Ruta de las autorizaciones
+Route::prefix('admin')->group(function() {
+  Auth::routes();
 });
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

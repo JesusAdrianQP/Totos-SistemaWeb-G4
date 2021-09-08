@@ -19,7 +19,7 @@
         <meta property="og:image:width" content="960" />
         <meta property="og:image:height" content="563" />
 
-        <title>Toto's Pizza | Perú</title>
+        <title>@yield('title', __('Totos Pizza | Perú'))</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">

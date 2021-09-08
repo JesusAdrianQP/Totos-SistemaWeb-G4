@@ -20,9 +20,13 @@ Route::view('/', 'custom/home');
 Route::resource('messages', App\Http\Controllers\MessageController::class); 
 
 /* Rutas de Módulo de administrador */
-//Ruta de las autorizaciones
 Route::prefix('admin')->group(function() {
+  //Ruta de las autorizaciones
   Auth::routes();
+
+  //DashBoard principal del administrador
+  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');  
 });
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Ruta para el control de platos (CRUD)
+Route::resource("dishes", App\Http\Controllers\DishController::class)->parameters(["dishes"=>"dish"]);

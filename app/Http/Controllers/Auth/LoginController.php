@@ -39,9 +39,9 @@ class LoginController extends Controller
     }
 
     public function redirectPath(){
-        if(Auth::user()->tipo_usuario){ 
+       /* if(Auth::user()->tipo_usuario){ 
             return '/admin/panel';
-        }
-        return '/home';
+        }*/
+        return '/admin/home';
     }
 }

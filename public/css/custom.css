@@ -11,5 +11,15 @@ Desarrolladores unidos por un bien mayor*/
 }
 
 .ct-nos-background{
-    background-image: url(../image/pizza-nosotros.jpg);
+    background-image: url(../image/fondo-ctn.png);
+    background-repeat: no-repat;
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+.offices-background{
+    background-image: url(../image/totos-pizza.jpg);
+    background-repeat: no-repat;
+    background-size: cover;
+    background-blend-mode: multiply;
 }

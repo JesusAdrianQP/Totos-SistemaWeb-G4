@@ -34,6 +34,9 @@
         <!-- Taildwind CSS Link -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+        <!-- Fontawesome script -->
+        <script src="https://kit.fontawesome.com/abe1732915.js" crossorigin="anonymous"></script>
+
         <!-- Toastr js-->
         <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 

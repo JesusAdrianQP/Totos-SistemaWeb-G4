@@ -11,8 +11,6 @@ class DishController extends Controller
     public function index(){
         $dishes = Dish::all();
         return view('custom.menu', compact('dishes'));
-        // $query=DB::table('products')->get();
-        // return view('products.index',['products'=>$query]);
     }
 
     public function create(){
@@ -39,7 +37,14 @@ class DishController extends Controller
         
         $dishes->file = Storage::url($request->file('file')->store('public/images'));
 
-        $dishes->save();
+    // public function store(Request $request){
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'number' => 'required',
+    //         'email' => 'required',
+    //         'subject' => 'required',
+    //         'description' => 'required'
+    //     ]);
 
         $notification = array(
             'message' => 'Plato Registrado',
@@ -47,8 +52,24 @@ class DishController extends Controller
         );
 
         return redirect()->route('home')->with($notification);
-    }
+    //-----------------LISTAR POR CATEGORIA---------------------
+    public function listOffers(Request $request){
+        
+                        ->orderBy('id', 'DESC')
 
+         return view('custom.menu', compact('dishes'));
+        
+        $dishes = Dish::where('category','like', 'ofertas')
+                        ->simplePaginate(9);
+    }
+    public function listPizzas(Request $request){
+        
+        $dishes = Dish::where('category','like', 'pizzas')
+                        ->orderBy('id', 'DESC')
+                        ->simplePaginate(9);
+
+         return view('custom.menu', compact('dishes'));
+        
     public function edit($id){
         //$products = Product::find($id);
         //return view('products.edit', compact('products'));
@@ -58,6 +79,14 @@ class DishController extends Controller
         //$products = Product::find($id);
         //$products->update($request->all());
         //return redirect()->route('products.index');
+    public function listPastas(Request $request){
+        
+        $dishes = Dish::where('category','like', 'pastas')
+                        ->orderBy('id', 'DESC')
+                        ->simplePaginate(9);
+
+         return view('custom.menu', compact('dishes'));
+        
     }
 
     public function destroy($id){
@@ -70,5 +99,23 @@ class DishController extends Controller
         );
 
         return redirect()->route('home')->with($notification);
+    public function listDrinks(Request $request){
+        
+        $dishes = Dish::where('category','like', 'bebidas')
+                        ->orderBy('id', 'DESC')
+                        ->simplePaginate(9);
+
+         return view('custom.menu', compact('dishes'));
+        
+    }
+
+    public function listExtra(Request $request){
+        
+        $dishes = Dish::where('category','like', 'adicionales')
+                        ->orderBy('id', 'DESC')
+                        ->simplePaginate(9);
+
+         return view('custom.menu', compact('dishes'));
+        
     }
 }

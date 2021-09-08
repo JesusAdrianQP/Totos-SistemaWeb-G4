@@ -17,15 +17,15 @@ use Illuminate\Support\Facades\Route;
 //Ruta inicial de la landing page
 Route::view('/', 'custom/home');
 //Notificaciones de formulario de contacto
-Route::resource('messages', App\Http\Controllers\MessageController::class); 
-//Metodos de la base de datos platos
-Route::resource('dishes', App\Http\Controllers\DishController::class); 
+Route::resource('messages', App\Http\Controllers\MessageController::class);  
 //Listado por categoria
 Route::get('list-offers',[App\Http\Controllers\DishController::Class, 'listOffers'])->name('dishes.offers');
 Route::get('list-pizzas',[App\Http\Controllers\DishController::Class, 'listPizzas'])->name('dishes.pizzas');
 Route::get('list-pastas',[App\Http\Controllers\DishController::Class, 'listPastas'])->name('dishes.pastas');
 Route::get('list-drinks',[App\Http\Controllers\DishController::Class, 'listDrinks'])->name('dishes.drinks');
 Route::get('list-extra',[App\Http\Controllers\DishController::Class, 'listExtra'])->name('dishes.extra');
+//Vista de sucursales
+Route::get('/offices', function(){ return view('custom.offices');});
 
 /* Rutas de Módulo de administrador */
 Route::prefix('admin')->group(function() {
@@ -36,9 +36,5 @@ Route::prefix('admin')->group(function() {
   Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');  
 });
 
-//Vista de sucursales
-Route::get('/offices', function(){ return view('custom.offices');});
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Ruta para el control de platos (CRUD)
 Route::resource("dishes", App\Http\Controllers\DishController::class)->parameters(["dishes"=>"dish"]);

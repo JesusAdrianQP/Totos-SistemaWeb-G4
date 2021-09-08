@@ -13,10 +13,6 @@ class DishController extends Controller
         return view('custom.menu', compact('dishes'));
     }
 
-    public function create(){
-        return view('components.register-dish'); //Vista del formulario de registro
-    }
-
     public function store(Request $request){
         $request->validate([
             'category' => 'required',
@@ -37,14 +33,7 @@ class DishController extends Controller
         
         $dishes->file = Storage::url($request->file('file')->store('public/images'));
 
-    // public function store(Request $request){
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'number' => 'required',
-    //         'email' => 'required',
-    //         'subject' => 'required',
-    //         'description' => 'required'
-    //     ]);
+        $dishes->save();
 
         $notification = array(
             'message' => 'Plato Registrado',
@@ -52,41 +41,46 @@ class DishController extends Controller
         );
 
         return redirect()->route('home')->with($notification);
-    //-----------------LISTAR POR CATEGORIA---------------------
-    public function listOffers(Request $request){
-        
-                        ->orderBy('id', 'DESC')
-
-         return view('custom.menu', compact('dishes'));
-        
-        $dishes = Dish::where('category','like', 'ofertas')
-                        ->simplePaginate(9);
     }
-    public function listPizzas(Request $request){
-        
+
+    public function listOffers(Request $request){        
+        $dishes = Dish::where('category','like', 'ofertas')
+                        ->orderBy('id', 'DESC')
+                        ->simplePaginate(9);
+
+         return view('custom.menu', compact('dishes'));        
+    }
+    
+    public function listPizzas(Request $request){        
         $dishes = Dish::where('category','like', 'pizzas')
                         ->orderBy('id', 'DESC')
                         ->simplePaginate(9);
 
-         return view('custom.menu', compact('dishes'));
-        
-    public function edit($id){
-        //$products = Product::find($id);
-        //return view('products.edit', compact('products'));
+        return view('custom.menu', compact('dishes'));
     }
 
-    public function update(Request $request, $id){
-        //$products = Product::find($id);
-        //$products->update($request->all());
-        //return redirect()->route('products.index');
-    public function listPastas(Request $request){
-        
+    public function listPastas(Request $request){        
         $dishes = Dish::where('category','like', 'pastas')
                         ->orderBy('id', 'DESC')
                         ->simplePaginate(9);
 
+        return view('custom.menu', compact('dishes'));
+    }
+
+    public function listDrinks(Request $request){        
+        $dishes = Dish::where('category','like', 'bebidas')
+                        ->orderBy('id', 'DESC')
+                        ->simplePaginate(9);
+
+        return view('custom.menu', compact('dishes'));
+    }
+
+    public function listExtra(Request $request){        
+        $dishes = Dish::where('category','like', 'adicionales')
+                        ->orderBy('id', 'DESC')
+                        ->simplePaginate(9);
+
          return view('custom.menu', compact('dishes'));
-        
     }
 
     public function destroy($id){
@@ -99,23 +93,5 @@ class DishController extends Controller
         );
 
         return redirect()->route('home')->with($notification);
-    public function listDrinks(Request $request){
-        
-        $dishes = Dish::where('category','like', 'bebidas')
-                        ->orderBy('id', 'DESC')
-                        ->simplePaginate(9);
-
-         return view('custom.menu', compact('dishes'));
-        
-    }
-
-    public function listExtra(Request $request){
-        
-        $dishes = Dish::where('category','like', 'adicionales')
-                        ->orderBy('id', 'DESC')
-                        ->simplePaginate(9);
-
-         return view('custom.menu', compact('dishes'));
-        
     }
 }

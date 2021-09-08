@@ -23,3 +23,11 @@ Desarrolladores unidos por un bien mayor*/
     background-size: cover;
     background-blend-mode: multiply;
 }
+
+.description{
+    overflow: hidden; 
+    text-overflow: ellipsis;  
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }

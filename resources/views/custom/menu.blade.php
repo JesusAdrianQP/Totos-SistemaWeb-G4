@@ -8,7 +8,7 @@
 
 @section('content-custom')
 <div class="bg-primero-500 px-32 py-10">
-    <div class="bg-segundo-500 h-screen">
+    <div class="bg-segundo-500 ">
         <div class="grid grid-cols-5 px-20 pt-10 pb-8 justify-items-center">
             <a href="{{route('dishes.offers')}}"  class="text-cuarto-500 hover:underline">OFERTAS</a>
             <a href="{{route('dishes.pizzas')}}"  class="text-cuarto-500 hover:underline">PIZZAS</a>
@@ -18,7 +18,7 @@
         </div>
         <div class="border-b-2 border-white mx-8 "></div>
 
-       <div class="grid grid-cols-3 justify-items-center mx-8 ">
+       <div class="grid grid-cols-2 justify-items-center mx-8 ">
         @foreach($dishes as $d)
         <div class="
             bg-white
@@ -34,10 +34,10 @@
             m-10
             ">
             <img class="h-1/2 w-full sm:h-full sm:w-1/2 object-cover"
-            src="{{asset('image/pizza-prueba.jpg')}}"
+            src="{{asset($d->file)}}"
             alt="pizza americana"
             />
-            {{-- <img class="h-1/2 w-full sm:h-full sm:w-1/2 object-cover" 
+            {{--<img class="h-1/2 w-full sm:h-full sm:w-1/2 object-cover" 
                 src="{{asset($d->file)}}" alt="Imagen"> --}}
             <div
             class="
@@ -47,7 +47,7 @@
                 items-baseline
                 justify-around
                 h-1/2
-                pl-6
+                pl-2
                 sm:h-full sm:items-baseline sm:w-1/2
             "
             >
@@ -56,14 +56,14 @@
                 {{$d->name}}
                 </h1>
             </div>
-            <p class="text-sm text-gray-500 w-4/5">
+            <p class="text-sm text-gray-500 w-4/5 whitespace-pre-line description">
                 {{$d->description}}
             </p>
             <div class="grid grid-cols-2 gap-4">
-                @if ($d->category === 'pizzas')
-                    <div><h1 class="font-bold text-gray-500">Familiar: <span class="font-normal">{{$d->price_familiar}}</span></h1></div>
+                @if($d->category === 'Pizzas')
+                    <div><h1 class="font-bold text-gray-500">Familiar </h1><span class="font-normal">S/. {{$d->price_familiar}}</span></div>
                 @endif
-                <div><h1 class="font-bold text-gray-500">Mediana: <span class="font-normal">{{$d->price_normal}}</span></h1></div>
+                <div><h1 class="font-bold text-gray-500">Mediana</h1> <span class="font-normal">S/. {{$d->price_normal}}</span></div>
           
             </div>
             </div>
